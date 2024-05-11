@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />     <!-- Google Material Icons -->
+    <link rel="stylesheet" href="/static/styles2.css">
+    <title>Student Grade Dashboard</title>
+</head>
+<body>
+
+    <header>
+        <a href="https://github.com/AmrSheta22/AutoGrader/tree/main" class="logo" target="_blank">AutoGrader</a>
+        <nav class="navigation">
+            <a href="#GradeDashboard">The Grade:</a>
+            <a href="#answer-comparison">Answer Comparison</a>
+            <a href="/">Grade Another Question?</a>
+        </nav>
+    </header>
+ 
+
+<!-- done -->
+    <section class="mainsection" id="GradeDashboard">
+        <h2 class="title">Grade Dashboard</h2>
+        <strong class="example-title-number">
+            <span>Total Number Of Questions Are: {{ numquestions }}</span>
+        </strong>
+
+    </section>
+
+
+
+
+    <section class="dashboard">
+
+        <div class="grade-cards">
+
+
+            <div class="individual-grade-card">
+                <h2 class="title">Question Number: 1</h2>
+                <div class="course-card">
+                    <h2>Current Grade is: {{ dispgrade }} out of 5.</h2>
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+     
+                <!-- More grade cards will be added dynamically -->
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="answer-comparison" id="answer-comparison">
+    <h2 class="title" >Answer Comparison</h2>
+    <div class="question">
+        <h3>Question 1</h3>
+        <div class="answers">
+            <div class="student-answer">
+                <h4>Student Answer:</h4>
+                <p>{{ dispstudentans }}</p>
+            </div>
+            <div class="model-answer">
+                <h4>Model Answer:</h4>
+                <p>{{ dispmodelans }}</p>
+
+                <!-- <div class="areaofdownloadgrade-button"> -->
+                <!-- </div> -->
+
+           
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- More questions and answers will be added dynamically -->
+
+</div>
+
+<div class="areaofdownloadgrade-button">
+    <a class="downloadgrade-button" href="/download">Download The Grade</a>
+
+
+</div>
+
+
+
+
+    <!-- <div class="performance-insights">
+        <h2>Performance Insights</h2>
+        <div class="strengths">
+            <h3>Strengths</h3>
+            <ul>
+                <li>Algebra: Strong understanding of algebraic concepts.</li>
+                <li>Geometry: Solid grasp of geometric principles.</li>
+            </ul>
+        </div>
+        <div class="weaknesses">
+            <h3>Areas for Improvement</h3>
+            <ul>
+                <li>Calculus: Need to review calculus topics, particularly derivatives.</li>
+                <li>Trigonometry: Struggled with trigonometric functions and identities.</li>
+            </ul>
+        </div>
+    </div> -->
+
+    
+
+
+
+
+<!-- <div class="revision-resources">
+    <h2>Revision Resources</h2>
+    <div class="resource">
+        <h3>Topic 1: Algebra</h3>
+        <p>Explore Khan Academy's algebra tutorials to strengthen your understanding of algebraic concepts.</p>
+        <a href="https://www.khanacademy.org/math/algebra" target="_blank">Khan Academy - Algebra</a>
+    </div>
+    <div class="resource">
+        <h3>Topic 2: Geometry</h3>
+        <p>Check out Math Is Fun's geometry resources for interactive lessons and practice problems.</p>
+        <a href="https://www.mathsisfun.com/geometry/index.html" target="_blank">Math Is Fun - Geometry</a>
+    </div>
+   
+</div> -->
+
+
+
+
+    <!-- <script src="{{ url_for('static', filename='scripts2.js') }}"></script> -->
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Calculate grade percentage
+            var currentGrade = parseInt('{{ dispgrade }}'); // Example grade
+            console.log(currentGrade); // Log currentGrade to the console
+            var gradePercentage = (currentGrade / 5) * 100;
+
+            // Select the progress bar
+            var progressBar = document.getElementById("progress-bar");
+
+            // Update progress bar width
+            progressBar.style.width = gradePercentage + "%";
+
+            // Determine color based on grade
+            if (currentGrade >= 4.0) {
+                progressBar.style.backgroundColor = "#4caf50"; // Green
+            } else if (currentGrade >= 3.0) {
+                progressBar.style.backgroundColor = "#ffc107"; // Yellow
+            } else {
+                progressBar.style.backgroundColor = "#f44336"; // Red
+            }
+        });
+    </script>
+
+
+
+
+<footer class="footer">
+    <p class="footer-title">
+        <i class="fas fa-envelope"></i>
+        support@<span>AutoGrader.com</span></p>
+    <div class="social-icons">
+        <a href="https://github.com/AmrSheta22/AutoGrader/tree/main" target="_blank" ><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+</footer>
+
+    
+</body>
+</html>
